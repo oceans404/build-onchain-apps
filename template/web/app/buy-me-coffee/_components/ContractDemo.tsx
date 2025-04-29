@@ -27,16 +27,16 @@ export default function BuyMeCoffeeContractDemo() {
         {memos?.length > 0 && <Memos memos={memos} />}
         <div className="mt-4 flex flex items-center justify-between">
           <Button
-            className="w-auto px-10"
+            className={clsx('w-auto px-10', { 'opacity-50 cursor-not-allowed': currentPage === 0 })}
             onClick={goToPreviousPage}
-            disabled={currentPage < 1}
+            disabled={currentPage === 0}
             buttonContent={<span>Read older messages</span>}
           />
 
           <div>Page {currentPage + 1}</div>
 
           <Button
-            className="w-auto px-10"
+            className={clsx('w-auto px-10', { 'opacity-50 cursor-not-allowed': memos.length < pageSize })}
             onClick={goToNextPage}
             disabled={memos.length < pageSize}
             buttonContent={<span>Read newer messages</span>}
